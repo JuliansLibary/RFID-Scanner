@@ -1,0 +1,150 @@
+<Window x:Class="RFID_Scanner.LayoutCL.Info"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RFID_Scanner.LayoutCL"
+             mc:Ignorable="d" 
+             Height="800" Width="1400" x:Name="Window" Icon="rfid.png" SizeChanged="Window_SizeChanged" MouseMove="Window_MouseMove" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow" ResizeMode="CanResize" Background="#6093AC" Opacity="0.95" BorderBrush="#779ECB" BorderThickness="1.5" KeyDown="Window_KeyDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="229*"/>
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="217*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="54*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="31*"></ColumnDefinition>
+            <ColumnDefinition Width="49*"/>
+            <ColumnDefinition Width="195*"/>
+            <ColumnDefinition Width="146*"/>
+            <ColumnDefinition Width="135*"/>
+            <ColumnDefinition Width="45*"/>
+            <ColumnDefinition Width="45*"/>
+            <ColumnDefinition Width="48*"></ColumnDefinition>
+            <ColumnDefinition Width="51*"/>
+            <ColumnDefinition Width="51*"/>
+            <ColumnDefinition Width="41*"/>
+            <ColumnDefinition Width="48*"/>
+            <ColumnDefinition Width="223*"/>
+            <ColumnDefinition Width="76*"/>
+            <ColumnDefinition Width="41*"/>
+            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="59*"/>
+        </Grid.ColumnDefinitions>
+        <Viewbox Opacity="0.95" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="3">
+            <TextBox FontFamily="Helvetica"
+                     IsReadOnly="True"
+                             FontWeight="Light"
+                             Text="Bitte Karte Scannen"
+                             FontSize="40"
+                             VerticalAlignment="Stretch"
+                             VerticalContentAlignment="Center"
+                             HorizontalAlignment="Stretch"
+                             Foreground="White"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             HorizontalContentAlignment="Center"
+                             />
+        </Viewbox>
+
+        <Viewbox Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="3">
+            <TextBox
+                        x:Name="KartenNummer"
+                             FontWeight="Light"
+                             Text=""
+                             FontSize="40"
+                             VerticalAlignment="Stretch"
+                             VerticalContentAlignment="Center"
+                             HorizontalAlignment="Stretch"
+                             Foreground="White"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             HorizontalContentAlignment="Center"
+                             Opacity="0.5"
+                            PreviewTextInput="Input_card" Width="330" 
+                        />
+        </Viewbox>
+
+
+        <Border
+                        Background="White"
+                        Opacity="0.8" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="3"/>
+
+
+
+        <Viewbox Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="3">
+            <TextBox IsReadOnly="True" Text="Orte die sie besucht haben" Background="Transparent" Foreground="White" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontWeight="Light" BorderBrush="Transparent"></TextBox>
+        </Viewbox>
+        <DataGrid ManipulationBoundaryFeedback="Datagrid_ManipulationBoundaryFeedback"  Background="Transparent" FontSize="32" FontWeight="Light" x:Name="Datagrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsReadOnly="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding}" Grid.ColumnSpan="7" SelectionChanged="Datagrid_SelectionChanged" Grid.Row="4" Grid.Column="1">
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Transparent" />
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Aktion"
+                                    Width="Auto"
+                                    Binding="{Binding SBezeichnung}"/>
+                <DataGridTextColumn Header="Standort"
+                                    Width="Auto"
+                                    Binding="{Binding s_bezeichnung}"/>
+                <DataGridTextColumn Header="Aktion"
+                                    Width="Auto"
+                                    Binding="{Binding Zeitstempel, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid ManipulationBoundaryFeedback="UnbesuchteStandorteUIGRID_ManipulationBoundaryFeedback" Background="Transparent" FontSize="32" FontWeight="Light" x:Name="UnbesuchteStandorteUIGRID" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsReadOnly="True" ItemsSource="{Binding}" Grid.ColumnSpan="7" Grid.Row="6" Grid.Column="1" SelectionChanged="UnbesuchteStandorteUIGRID_SelectionChanged">
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Transparent" />
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Bezeichnung"
+                                    Width="Auto"
+                                    Binding="{Binding SBezeichnung}"/>
+                <DataGridTextColumn Header="Standort"
+                                    Width="Auto"
+                                    Binding="{Binding s_bezeichnung}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+
+        <Grid x:Name="ImageGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="9" Grid.ColumnSpan="7" Grid.RowSpan="6" Grid.Row="1" />
+        <Viewbox Grid.Column="12" Grid.Row="8" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="222.721,0,0.279,0">
+            <RadioButton HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  x:Name="Obergeschoss" GroupName="Geschosswechsel" Checked="Obergeschoss_Checked" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  />
+        </Viewbox>
+        <Viewbox  Grid.Column="9" Grid.Row="8" Grid.RowSpan="3" Grid.ColumnSpan="3" Margin="50.667,0,0.279,0">
+            <RadioButton  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  x:Name="Untergeschoss" GroupName="Geschosswechsel" Checked="Untergeschoss_Checked" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+
+        </Viewbox>
+        <Viewbox Grid.Column="13" Grid.Row="8" Grid.ColumnSpan="4" Grid.RowSpan="3" Margin="75.721,0,0.279,0">
+            <Label FontSize="24" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Content="OG anzeigen" FontWeight="Light" Foreground="White" />
+        </Viewbox>
+        <Viewbox Grid.Column="6" Grid.Row="8" Grid.RowSpan="3" Grid.ColumnSpan="4" Margin="0,0,0.279,0">
+            <Label FontSize="24" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="EG anzeigen" FontWeight="Light" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  />
+        </Viewbox>
+        <Viewbox  Grid.ColumnSpan="5" Grid.Row="5" Grid.Column="1" >
+            <TextBox BorderBrush="Transparent"  HorizontalAlignment="Stretch" Background="Transparent" IsReadOnly="True" Foreground="White" FontWeight="Light" FontSize="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  TextWrapping="Wrap" Text="Orte die sie nicht besucht haben" VerticalAlignment="Stretch"/>
+
+        </Viewbox>
+        <Viewbox Grid.Column="3" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Label x:Name="Veranstaltung_UI" FontWeight="Light" FontSize="25" Foreground="White" Content="" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" />
+        </Viewbox>
+        <Viewbox  Grid.ColumnSpan="3" Grid.RowSpan="3" >
+            <Image x:Name="logo" Source="/LayoutCL;component/Edvschule Logo.png" Height="62"/>
+        </Viewbox>
+
+
+    </Grid>
+
+</Window>

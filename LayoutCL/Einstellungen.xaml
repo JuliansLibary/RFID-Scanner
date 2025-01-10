@@ -1,0 +1,95 @@
+﻿<Window x:Class="RFID_Scanner.LayoutCL.Einstellungen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RFID_Scanner.LayoutCL"
+             mc:Ignorable="d" 
+             Icon="rfid.png" x:Name="Einstellungen_ui" Height="400" Width="400" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown" Background="#6093AC" WindowStyle="SingleBorderWindow" >
+    <Grid x:Name="EinstellungsGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="46*"/>
+            <RowDefinition Height="28*"/>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="46*"/>
+            <RowDefinition Height="28*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="28*"/>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="13*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="18*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="69*"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="44*"/>
+            <ColumnDefinition Width="46*"/>
+            <ColumnDefinition Width="21*"/>
+
+        </Grid.ColumnDefinitions>
+        <Viewbox Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="5">
+            <Label Foreground="White" FontWeight="Light" FontSize="30" Content="Infomodus" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+        </Viewbox>
+        <Viewbox Grid.Column="3" Grid.Row="2" >
+            <RadioButton x:Name="InfomodusAn" HorizontalAlignment="Stretch" GroupName="InfoModus" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Checked="InfomodusAn_Checked"/>
+        </Viewbox>
+        <Viewbox Grid.Column="7" Grid.Row="2">
+            <RadioButton  x:Name="InfomodusAus" HorizontalAlignment="Stretch" GroupName="InfoModus" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Checked="InfomodusAus_Checked"/>
+        </Viewbox>
+        <Viewbox Grid.Column="4" Grid.Row="2">
+            <Label Content="AN" Foreground="White" FontSize="14" FontWeight="Light" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+        </Viewbox>
+        <Viewbox Grid.Column="6" Grid.Row="2">
+            <Label Content="AUS" Foreground="White" FontSize="14" FontWeight="Light" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+        </Viewbox >
+        <Viewbox x:Name="combobox" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="7">
+        </Viewbox>
+        <Viewbox x:Name="label" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="7">
+            
+        </Viewbox>
+        <Viewbox Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="5">
+            <Label Foreground="White" FontWeight="Light" FontSize="30" Content="Dark Mode" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+        </Viewbox>
+        <Viewbox Grid.Column="3" Grid.Row="7">
+            <RadioButton  x:Name="DarkmodusAn" HorizontalAlignment="Stretch" GroupName="DarkMode" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        </Viewbox>
+        <Viewbox Grid.Column="7" Grid.Row="7">
+            <RadioButton  x:Name="DarkmodusAus" HorizontalAlignment="Stretch" GroupName="DarkMode" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        </Viewbox>
+        <Viewbox  Grid.Column="4" Grid.Row="7">
+            <Label Content="AN" Foreground="White" FontSize="14" FontWeight="Light" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        </Viewbox>
+        <Viewbox Grid.Column="6" Grid.Row="7">
+            <Label Content="AUS" Foreground="White" FontSize="14" FontWeight="Light" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        </Viewbox>
+        <Viewbox Grid.ColumnSpan="3" Grid.Row="9" Grid.Column="1">
+            <Button Content="Abbrechen" x:Name="Abbrechen" Background="#ff6961" FontSize="15" FontWeight="Light" Click="Abbrechen_click" Height="34" >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="4.5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Viewbox>
+
+        <Viewbox Grid.ColumnSpan="3" Grid.Column="7" Grid.Row="9">
+            <Button Content="Übernehmen" x:Name="Uebernehmen" IsDefault="True" Background="#90ee90" FontSize="15" FontWeight="Light" Click="Uebernehmen_click" Height="40" >
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="4.5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Viewbox>
+
+    </Grid>
+</Window>

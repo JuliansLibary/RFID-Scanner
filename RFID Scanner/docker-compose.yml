@@ -1,0 +1,16 @@
+version: "3"
+services:
+  postgres:
+    restart: always
+    image: postgres:latest
+    container_name: 'Bennis-Datenbank'
+    volumes:
+     - /data/postgesql/data:/var/lib/postgresql/data/:rw
+    ports:
+     - "5432:5432"
+    environment:
+     POSTGRES_USER: postgres
+     POSTGRES_PASSWORD: postgres
+     PGDATA: /var/lib/postgresql/data/
+
+
